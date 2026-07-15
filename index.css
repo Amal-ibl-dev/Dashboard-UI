@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Lets dark: classes respond to a manual .dark class on <html>,
+   toggled by the sun/moon button in Header.jsx. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-primary: #4f46e5;
+  --color-secondary: #fb923c;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+
+  --color-white: #ffffff;
+  --color-black: #18181b;
+
+  --color-bg: #f4f4f5;
+  --color-surface: #ffffff;
+  --color-border: #f4f4f5;
+
+  --color-text: #18181b;
+  --color-text-muted: #71717a;
+}
+
+.dark {
+  --color-bg: #09090b;
+  --color-surface: #18181b;
+  --color-border: #27272a;
+
+  --color-text: #ffffff;
+  --color-text-muted: #a1a1aa;
+}
+
+/* ------------------------------------------------------------------ */
+/* THEME REGISTRATION                                                  */
+/* Plain utility names (bg-maingbcolor, text-maintextcolor, ...) only   */
+/* work if Tailwind knows about them — that requires @theme, unlike    */
+/* the bg-[var(--color-x)] bracket syntax used elsewhere, which reads   */
+/* the CSS variable directly without registration.                     */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-maingbcolor: var(--color-surface); /* sidebar / card background */
+  --color-maintextcolor: var(--color-text); /* primary text */
+
+  /* NOTE: kept separate from --color-text on purpose — --color-text is
+     body text (near-black/white), this is the orange brand accent used
+     for the active nav highlight, arrow icon, and promo gradient. Using
+     "text-text" for both in Sidebar.jsx would make the active nav item
+     render in body-text color instead of orange. Use text-accent /
+     via-accent there instead. */
+  --color-accent: var(--color-secondary);
+
+  /* Registers bg-success / text-success as real utilities (bg-green with
+     no shade number isn't valid Tailwind — it needs e.g. green-500). */
+  --color-success: var(--color-success);
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-zinc-900 rounded-3xl p-6 border border-zinc-100 dark:border-zinc-800
+      shadow-sm shadow-zinc-100 dark:shadow-black/10 transition-colors duration-300;
+  }
+
+  .btn-primary {
+    @apply h-8 px-4 rounded-full text-xs font-medium bg-indigo-600 text-white
+      hover:bg-indigo-700 transition-colors;
+  }
+  .btn-secondary {
+    @apply h-8 px-4 rounded-full text-xs font-medium bg-orange-50 dark:bg-orange-500/10
+      text-orange-500 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-500/20 transition-colors;
+  }
+}
