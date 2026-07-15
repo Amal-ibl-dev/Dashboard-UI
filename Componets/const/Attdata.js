@@ -1,0 +1,20 @@
+export const DATA = [
+  { day: "23 Sep", present: 55, absence: 20 },
+  { day: "", present: 78, absence: 35 },
+  { day: "24 Sep", present: 45, absence: 25 },
+  { day: "", present: 60, absence: 55 },
+  { day: "25 Sep", present: 40, absence: 65 },
+  { day: "", present: 70, absence: 60 },
+  { day: "26 Sep", present: 95, absence: 62 },
+  { day: "", present: 65, absence: 58 },
+  { day: "27 Sep", present: 88, absence: 68 },
+  { day: "", present: 55, absence: 40 },
+  { day: "28 Sep", present: 78, absence: 35 },
+  { day: "", present: 60, absence: 28 },
+  { day: "29 Sep", present: 70, absence: 45 },
+  { day: "", present: 50, absence: 30 },
+  { day: "30 Sep", present: 65, absence: 25 },
+  { day: "", present: 45, absence: 20 },
+  { day: "01 Oct", present: 55, absence: 22 },
+];
+
